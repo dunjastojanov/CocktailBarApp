@@ -1,0 +1,212 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #151515;
+    color: #fff;
+    font-family: 'Georgia', serif;
+
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+nav {
+    padding: 1em 5em;
+    background-color: #101010;
+}
+
+h1 {
+    font-weight: lighter;
+    font-size: 2em;
+}
+
+.preference-button {
+    background-color: #101010;
+    color: white;
+    width: 10em;
+    height: 14em;
+    font-size: 1em;
+    border: none;
+    margin: 1em;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+.preference-button:hover {
+    box-shadow: 3px 3px 5px rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.preference-button.selected {
+    color: #993a01;
+    box-shadow: 3px 3px 5px rgba(153, 58, 1, 0.3);
+}
+
+.preference-button div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+
+
+.preference-button img {
+    width: 6em;
+    height: 6em;
+    object-fit: cover;
+    border-radius: 50%;
+    filter: brightness(40%);
+    border: 0.4em solid rgba(255, 255, 255, 0.5);
+
+}
+
+.preference-button:hover img {
+    filter: brightness(100%);
+
+}
+
+.preference-button.selected img {
+    filter: brightness(80%);
+
+}
+
+button.step-tracker {
+    border: none;
+    width: 3em;
+    height: 0.5em;
+    border-radius: 5px;
+    background-color: black;
+}
+
+button.step-tracker.active {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.step-container {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+form {
+    padding: 0 10em;
+}
+
+.preference-button .decor {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: transparent;
+    width: 3em;
+    height: 0.25em;
+    border-radius: 1em;
+}
+
+.preference-button div.title {
+    font-family: 'Georgia', serif;
+
+}
+
+.recommendation-form .button-container {
+    display: flex;
+    gap: 1em;
+    margin: 1em;
+    justify-content: center;
+}
+
+.recommendation-form .button-container button {
+    color: white;
+    background-color: #101010;
+    border: none;
+    padding: 1em 3em;
+    width: 180px;
+    font-size: 1em;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+.recommendation-form .button-container button:hover{
+    box-shadow: 3px 3px 5px rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.cocktail-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1em;
+}
+
+.cocktail-card {
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    padding-bottom: 1em;
+    gap: 1em;
+    position: relative;
+}
+
+.cocktail-card .ingredients {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cocktail-card .strength {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.cocktail-card .strength img {
+    width: 2em;
+    height: 2em;
+    margin-right: 0.5em;
+    margin-top: 0.75em;
+}
+
+.cocktail-card:hover .ingredients {
+    opacity: 1;
+}
+
+.cocktail-card img {
+    height: 15em;
+    width: 15em;
+    object-fit: contain;
+
+}
+
+.flavors {
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+.flavors div {
+    background-color: rgba(153, 58, 1, 0.7);
+    padding: 0.5em;
+    font-weight: bold;
+    font-size: 0.75em;
+    border-radius: 5px;
+}
+
