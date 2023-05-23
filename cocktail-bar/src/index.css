@@ -19,6 +19,16 @@ code {
 nav {
     padding: 1em 5em;
     background-color: #101010;
+    display: flex;
+    gap: 2em;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
 }
 
 h1 {
@@ -54,7 +64,6 @@ h1 {
     justify-content: center;
     gap: 1em;
 }
-
 
 
 .preference-button img {
@@ -112,14 +121,14 @@ form {
 
 }
 
-.recommendation-form .button-container {
+.button-container {
     display: flex;
     gap: 1em;
     margin: 1em;
     justify-content: center;
 }
 
-.recommendation-form .button-container button {
+.button-container button {
     color: white;
     background-color: #101010;
     border: none;
@@ -129,7 +138,7 @@ form {
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
 }
 
-.recommendation-form .button-container button:hover{
+.button-container button:hover {
     box-shadow: 3px 3px 5px rgba(255, 255, 255, 0.2);
     transform: scale(1.1);
     cursor: pointer;
@@ -208,5 +217,91 @@ form {
     font-weight: bold;
     font-size: 0.75em;
     border-radius: 5px;
+}
+
+.event-form {
+    display: flex;
+    gap: 3em;
+}
+
+.event-form div {
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    height: 25vh;
+    justify-content: center;
+    border: 5px solid rgba(255,255,255, 0.2);
+    align-items: center;
+    margin: 1em;
+    gap: 1.5em;
+}
+
+.event-form div:hover {
+    border: 5px solid rgba(255,255,255, 0.5);
+}
+
+.event-form input {
+    padding: 0.5em;
+    font-size: 1.25em;
+    border: none;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+    align-items: center;
+}
+
+.event-form input:hover {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.event-form input:focus {
+    border: none;
+    background-color: rgba(153, 58, 1, 0.5);
+    outline: none;
+}
+
+.event-form label {
+    font-size: 1.5em;
+}
+
+.even-plan {
+    display: flex;
+    gap: 6em;
+
+}
+
+.even-plan .cocktail-container {
+    grid-template-columns: 1fr 1fr;
+}
+
+.ingredient-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1em;
+    padding: 1em;
+}
+
+.ingredient-card {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 15vw;
+    padding: 0.75em;
+
+}
+
+.ingredient-card:hover {
+    background-color: #101010;
+}
+
+.ingredient-card div.title {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.ingredient-card:hover div.title {
+    color: #993a01;
 }
 
