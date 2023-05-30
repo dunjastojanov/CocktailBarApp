@@ -151,7 +151,6 @@ form {
 }
 
 .cocktail-card {
-    margin: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -260,6 +259,26 @@ form {
     outline: none;
 }
 
+.event-form select {
+    padding: 0.5em;
+    font-size: 1.25em;
+    border: none;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+    align-items: center;
+}
+
+.event-form select:hover {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.event-form select:focus {
+    border: none;
+    background-color: rgba(153, 58, 1, 0.5);
+    outline: none;
+}
+
 .event-form label {
     font-size: 1.5em;
 }
@@ -301,7 +320,42 @@ form {
     font-weight: bold;
 }
 
-.ingredient-card:hover div.title {
-    color: #993a01;
+button.order {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.3);
+    font-family: 'Georgia', serif;
+    color: black;
+    border: none;
+    padding: 0.5em;
+    width: 100%;
+}
+
+button.order:hover {
+    background-color: #993a01;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1em;
+}
+
+.alarm-container {
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+}
+
+.alarm-container div {
+    background-color: #993a01;
+    color: white;
+    padding: 0.5em;
+    border-radius: 3px;
+}
+
+.alarm-container div:hover {
+    background-color: rgba(153, 58, 1, 0.7);
 }
 

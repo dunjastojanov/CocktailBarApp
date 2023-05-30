@@ -1,16 +1,24 @@
-import {useState} from "react";
+import {useContext, useState} from "react";
 import axios from "axios";
 import {CocktailCard} from "./CocktailCard";
+import {toast} from "react-toastify";
+import {AlarmContext, EventTypeContext} from "./App";
 
 export function EventPlanningForm() {
+
+    const {eventType, setEventType} = useContext(EventTypeContext)
+    const {alarms, setAlarms} = useContext(AlarmContext)
+
+
     const [data, setData] = useState({
-        male: 0,
-        female: 0,
-        hours: 0
+        male: 80,
+        female: 20,
+        hours: 3,
+        type: "BIRTHDAY"
     });
 
     const [ingredients, setIngredients] = useState([])
-    const [cocktails, setCocktails] = useState([])
+    const [menu, setMenu] = useState([])
 
     const handleChange = (e, name) => {
         setData({...data, [name]: e.target.value});
@@ -20,23 +28,25 @@ export function EventPlanningForm() {
         e.preventDefault();
 
         let dto = {
-            maleGuestAmount : data.male,
+            maleGuestAmount: data.male,
             femaleGuestAmount: data.female,
-            eventHours: data.hours
+            eventHours: data.hours,
+            eventType: data.type
         }
 
-        axios.post("http://localhost:8080/event/plan/1", dto).then(
+        axios.post("http://localhost:8080/event/plan", dto).then(
             res => {
-                console.log(res.data);
                 setIngredients(res.data.ingredients);
-                setCocktails(res.data.cocktails);
+                setMenu(res.data.cocktails);
+                setEventType(res.data.eventType);
+                toast.success("You successfully ordered a cocktail.");
             }
-        )
+        ).catch(err => toast.error(err.message))
     }
 
     return (<div>
 
-        {ingredients.length === 0 && cocktails.length === 0 &&
+        {ingredients.length === 0 && menu.length === 0 &&
             <form>
                 <div className="event-form">
                     <div>
@@ -58,6 +68,19 @@ export function EventPlanningForm() {
                         }}/>
 
                     </div>
+
+                    <div>
+                        <label>Event Type</label>
+                        <select name="type" value={data.type} onChange={(e) => handleChange(e, "type")}>
+                            <option value=""/>
+                            <option label="Birthday" value={"BIRTHDAY"}/>
+                            <option label="Business" value={"BUSINESS"}/>
+                            <option label="Wedding" value={"WEDDING"}/>
+                            <option label="Bachelorette party" value={"BACHELORETTE_PARTY"}/>
+                            <option label="Bachelor party" value={"BACHELOR_PARTY"}/>
+                        </select>
+
+                    </div>
                 </div>
                 <div className="button-container">
                     <button onClick={(e) => handleSubmit(e)}>Submit</button>
@@ -65,12 +88,15 @@ export function EventPlanningForm() {
             </form>
         }
 
+        {alarms.length > 0 && <div className="alarm-container">Out of: {alarms.map(alarm => {
+            return <div>{alarm}</div>
+        })}</div>}
+
         <div className="even-plan">
 
-
-            {cocktails.length > 0 && <div className="cocktail-container">
-                {cocktails.map((cocktail, index) => {
-                    return <CocktailCard key={index} cocktail={cocktail}/>
+            {menu.length > 0 && <div className="cocktail-container">
+                {menu.map((cocktail, index) => {
+                    return <CocktailCard key={index} cocktail={cocktail} canOrder={true} setCocktails={setMenu}/>
                 })}
             </div>}
 
@@ -79,16 +105,13 @@ export function EventPlanningForm() {
                 {ingredients.map((ingredient, index) => {
                     return <div key={index} className="ingredient-card">
                         <div className="title">{ingredient.ingredient}</div>
-                        <div>{+ingredient.amount/1000}l</div>
+                        <div>{+ingredient.amount / 1000}l</div>
                     </div>
                 })}
 
             </div>}
 
         </div>
-
-
-
 
 
     </div>)

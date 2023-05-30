@@ -29,7 +29,7 @@ export function CocktailRecommendationForm() {
             flavors: selectedFlavors.map(flavor => transform(flavor))
         }
 
-        axios.post("http://localhost:8080/cocktail/recommendation/" + 1, dto).then(result => {
+        axios.post("http://localhost:8080/cocktail/recommendation", dto).then(result => {
             if (result.data.length === 0) {
                 toast.info("No recommendations for given specifications")
             }
